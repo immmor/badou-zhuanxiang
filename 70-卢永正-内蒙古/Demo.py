@@ -32,9 +32,9 @@ class TorchModel(nn.Module):
         # self.activation = torch.sigmoid     #sigmoid归一化函数
         self.activation = nn.Softmax()
         self.loss = nn.functional.mse_loss  # loss函数采用均方差损失
-        # self.loss = nn.CrossEntropyLoss()
 
     # 当输入真实标签，返回loss值；无真实标签，返回预测值
+
     def forward(self, x, y=None):
         # (batch_size, sen_len) -> (batch_size, sen_len, vector_dim)
         x = self.embedding(x)
@@ -42,7 +42,6 @@ class TorchModel(nn.Module):
         x = self.pool(x).squeeze()
         x = self.classify(x)  # (batch_size, vector_dim) -> (batch_size, 1)
         y_pred = self.activation(x)  # (batch_size, 10) -> (batch_size, 10)
-        # y_pred = torch.argmax(y_pred,dim=2)
         if y is not None:
             return self.loss(y_pred, y)  # 预测值和真实值计算损失
         else:
