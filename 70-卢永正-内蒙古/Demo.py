@@ -207,5 +207,3 @@ def predict(model_path, vocab_path, input_strings):
 
 if __name__ == "__main__":
     main()
-    # test_strings = ["ffvaee", "cwsdfg", "rqwdyg", "nlkwww"]
-    # predict("model.pth", "vocab.json", test_strings)
