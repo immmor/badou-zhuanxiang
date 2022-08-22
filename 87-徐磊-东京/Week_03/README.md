@@ -6,6 +6,11 @@
 * 方法二:循环
 
 #### 输出结果
-* 用程序比较了输出结果是否与参考答案一致
+* 切分完并比较切分结果是否与参考答案一致
 
-<img width=350 src='./others/rst.png'>
+##### (1)递归
+<img width=350 src='./others/rst_recursion.png'>
+
+
+##### (2)循环
+<img width=350 src='./others/rst_loop.png'>
