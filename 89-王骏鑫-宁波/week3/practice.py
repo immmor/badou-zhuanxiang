@@ -76,14 +76,6 @@ def cut_method3(string, words_dict, max_len):
             return
 
 
-# 单字词全匹配
-def cut_method4(string):
-    words = []
-    for i in string:
-        words.append(i)
-    return words
-
-
 def all_cut(sentence, Dict):
     if sentence == "":
         return []
@@ -95,7 +87,6 @@ def all_cut(sentence, Dict):
     # 含单字词分割
     target.append(cut_method1(sentence, words_dict.keys(), max(words_dict.values()))[0])
     target.append(cut_method2(sentence, words_dict.keys(), max(words_dict.values()))[0])
-    target.append(cut_method4(sentence))
     # 不含单字词分割
     list1 = []
     for key, val in words_dict.items():
@@ -110,14 +101,54 @@ def all_cut(sentence, Dict):
     return target
 
 
+# print(all_cut(sentence, Dict))
 
 
+def all_cuts(sentence, Dict):
+    # 第一步：全可能切分
+    import random
+    max_len = len(max(list(Dict.keys())))
+    words_list = []
+    for i in range(2000):
+        sen = sentence
+        words = []
+        while sen != '':
+            length = random.randint(1, max_len)
+            try:
+                word = sen[:length]
+                words.append(word)
+                sen = sen[len(word):]
+            except:
+                if length > len(sen):
+                    length = random.randint(1, len(sen))
+                    word = sen[:length]
+                    words.append(word)
+                    sen = sen[len(word):]
+                else:
+                    print("None")
+        words_list.append(words)
+    word_list = []
+    for j in words_list:
+        if j not in word_list:
+            word_list.append(j)
+
+    # 第二步：与词表进行匹配可行性
+    target = []
+    for List in word_list:
+        flag = True
+        for i in List:
+            if i not in Dict.keys():
+                flag = False
+                break
+        if flag != False:
+            target.append(List)
+    return target
 
 
+possible = all_cuts(sentence, Dict)
+print(len(possible), possible)
 
 
-
-print(all_cut(sentence, Dict))
 """
 统计词数并对比，若相同则对比单字词，再相同则对比非字典词
 """
