@@ -1,4 +1,4 @@
-作业内容：将Demo中二分类任务改成多分类任务。
+week02作业内容：将Demo中二分类任务改成多分类任务。
 
 自己写作业时一些要点：
 <ol>
@@ -18,3 +18,7 @@
   <li>【loss & acc plot.png】Loss & Acc随epoch变化图；</li>
   <li>【train and predict log.md】记录训练和预测输出日志；</li>
 </ol>
+
+
+
+P.S. 一紧张文件夹名字写错了，应该是week02，但是改起来太麻烦，就这样吧~
